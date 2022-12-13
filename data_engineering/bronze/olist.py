@@ -6,7 +6,7 @@ def ingestion_table(file_path):
                                .replace(".csv", "")
                                .replace("_dataset", ""))
     (spark.read
-          .csv(file_path, header=True)
+          .csv(file_path, header=True, multiLine=True)
           .coalesce(1)
           .write
           .mode("overwrite")
